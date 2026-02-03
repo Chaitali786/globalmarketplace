@@ -68,13 +68,17 @@ http.createServer((req, res) => {
     ) {
       res.write(`<h4>Selected Category: ${dynamicpath.toUpperCase()}</h4>`);
       let matchFound = false;
+      if (pathbrandName) {
+        res.write(`<p>Showing products from the brand: <strong>${pathbrandName}</strong></p>`);
+      }
+      
        productList.forEach((product) => {
             const isCategoryMatch = product.category === dynamicpath;
             const isBrandMatch = !pathbrandName || pathbrandName.toLowerCase() === product.brand.toLowerCase();
 
             if (isCategoryMatch && isBrandMatch) {
                 matchFound = true;
-                res.write(`<p>Showing products from the brand: <strong>${pathbrandName}</strong></p>`);
+                
                 res.write(`
                     <div>
                         <h3>${product.name}</h3> 
