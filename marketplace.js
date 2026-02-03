@@ -74,6 +74,7 @@ http.createServer((req, res) => {
 
             if (isCategoryMatch && isBrandMatch) {
                 matchFound = true;
+                res.write(`<p>Showing products from the brand: <strong>${pathbrandName}</strong></p>`);
                 res.write(`
                     <div>
                         <h3>${product.name}</h3> 
